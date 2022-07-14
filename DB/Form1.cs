@@ -20,6 +20,9 @@ namespace DB
         public Form1()
         {
             InitializeComponent();
+
+            //Display contents on start the app
+            disp_data();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -38,6 +41,8 @@ namespace DB
 
             con.Close(); //close DB connection
 
+            disp_data();
+
             MessageBox.Show("Information is inserted successfully into the DB!");
 
             //Clear the textboxes
@@ -46,6 +51,27 @@ namespace DB
             textBoxCountry.Clear();
             textBoxName.Focus();
         }
+
+
+        public void disp_data()
+        {
+            con.Open();
+
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT * FROM table_db";
+            cmd.ExecuteNonQuery();
+            
+            //to show on the dataGridView
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            dataGridViewDB.DataSource = dt;
+
+            con.Close();
+
+        }
+
 
         private void buttonExit_Click(object sender, EventArgs e)
         {

@@ -83,14 +83,14 @@
             this.textBoxCountry.Location = new System.Drawing.Point(162, 190);
             this.textBoxCountry.Name = "textBoxCountry";
             this.textBoxCountry.Size = new System.Drawing.Size(171, 29);
-            this.textBoxCountry.TabIndex = 4;
+            this.textBoxCountry.TabIndex = 5;
             // 
             // textBoxCity
             // 
             this.textBoxCity.Location = new System.Drawing.Point(162, 107);
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(171, 29);
-            this.textBoxCity.TabIndex = 5;
+            this.textBoxCity.TabIndex = 4;
             // 
             // dataGridViewDB
             // 
