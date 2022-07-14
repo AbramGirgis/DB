@@ -43,7 +43,7 @@ namespace DB
 
             disp_data();
 
-            MessageBox.Show("Information is inserted successfully into the DB!");
+            MessageBox.Show("Record is inserted successfully into the DB!");
 
             //Clear the textboxes
             textBoxName.Clear();
@@ -51,6 +51,32 @@ namespace DB
             textBoxCountry.Clear();
             textBoxName.Focus();
         }
+
+        //Flow to connect and read data from DB:
+           // 1-create a connection object to database
+            //SqlConnection con = new SqlConnection(@"connection string");
+
+            //2-open the connection
+            //con.Open();
+
+            //3-create a command object and set command type and command text(query) and then execute it
+            //SqlCommand cmd = con.CreateCommand();
+            //cmd.CommandType = CommandType.Text;
+            // cmd.CommandText = "SELECT * FROM table_db";
+            //cmd.ExecuteNonQuery();
+
+           // 4-create a temporary table in memory to save fetched data from database into it and then pass data to frontend(view grid)
+            //DataTable dt = new DataTable();
+
+            //5-Use sqlDataAdapter to fetch data from database and fill temporary table(dt object) in memory.
+            //SqlDataAdapter da = new SqlDataAdapter(cmd);
+            //da.Fill(dt);
+
+            //6-After filling dt(temporary table in memory), assign this table to  DataSource attribute from dataGridViewDB object to show data in the grid:
+            //dataGridView1.DataSource = dt;
+
+            //7-close connection
+            //con.Close();
 
 
         public void disp_data()
@@ -81,6 +107,39 @@ namespace DB
             {
                 Application.Exit();
             }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            con.Open();
+
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "DELETE FROM table_db WHERE name='"+textBoxName.Text+"'";
+            cmd.ExecuteNonQuery();
+
+            con.Close();
+
+            //display data after modifications
+            disp_data();
+            MessageBox.Show("Record is deleted successfully!");
+
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            con.Open();
+
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "UPDATE table_db SET name='"+textBoxCity.Text+"' WHERE name='"+textBoxName.Text+"'";
+            cmd.ExecuteNonQuery();
+
+            con.Close();
+
+            //display data after modifications
+            disp_data();
+            MessageBox.Show("Record is updated successfully!");
         }
     }
 }
