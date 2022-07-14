@@ -140,6 +140,7 @@
             this.buttonDisplay.TabIndex = 10;
             this.buttonDisplay.Text = "Display";
             this.buttonDisplay.UseVisualStyleBackColor = true;
+            this.buttonDisplay.Click += new System.EventHandler(this.buttonDisplay_Click);
             // 
             // buttonExit
             // 

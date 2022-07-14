@@ -22,7 +22,7 @@ namespace DB
             InitializeComponent();
 
             //Display contents on start the app
-            disp_data();
+            //disp_data();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -140,6 +140,11 @@ namespace DB
             //display data after modifications
             disp_data();
             MessageBox.Show("Record is updated successfully!");
+        }
+
+        private void buttonDisplay_Click(object sender, EventArgs e)
+        {
+            disp_data();
         }
     }
 }
